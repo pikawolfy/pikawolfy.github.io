@@ -64,7 +64,6 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 	svg.style('height', networkWidth + 70);
 
 	const r = networkWidth * .0125;
-	console.log(r)
 
 	const mapX = d3.scaleLinear().domain([154, 677]).range([20, networkWidth]);
 	const mapY = d3.scaleLinear().domain([141, 665]).range([20, networkWidth]);
@@ -178,6 +177,8 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
        .style('font-family', 'Helvetica')
        .style('font-size', 14)
        .text('Infected universities');
+
+    d3.select('body').style('visibility', 'visible');
 
 	setTimeout(() => {
 		animateEpidemic(epidemics);

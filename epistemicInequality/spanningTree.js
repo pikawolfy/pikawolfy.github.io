@@ -178,6 +178,8 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
        .style('font-size', 14)
        .text('Infected universities');
 
+    d3.select("body").style("visibility", "visible");
+
 	setTimeout(() => {
 		animateEpidemic(epidemics);
 	}, 250);

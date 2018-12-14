@@ -59,6 +59,7 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 
     const networkWidth = document.body.clientWidth / fraction;
 	const diff = (document.body.clientWidth / 3) - networkWidth;
+	const xOffset = 30;
 
 	svg.style('height', networkWidth + 70);
 
@@ -77,7 +78,7 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 					 .enter()
 					 .append('circle')
 					 .attr('id', node => fixSchoolName(node[0]))
-					 .attr('cx', node => mapX(parseFloat(node[1])))
+					 .attr('cx', node => mapX(parseFloat(node[1])) + xOffset)
 					 .attr('cy', node => mapY(parseFloat(node[2])))
 					 .attr('r', node => node[0] == highPrestigeSchool ? r + (r/6) : r)
 					 .attr('fill', node => node[0] == highPrestigeSchool ? sourceCol : 'rgb(250, 250, 250)')
@@ -89,9 +90,9 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 					 .enter()
 					 .append('line')
 					 .attr('id', edge => fixSchoolName(edge[5]) + '-' + fixSchoolName(edge[6]))
-					 .attr('x1', edge => mapX(parseFloat(edge[0])))
+					 .attr('x1', edge => mapX(parseFloat(edge[0])) + xOffset)
 					 .attr('y1', edge => mapY(parseFloat(edge[1])))
-					 .attr('x2', edge => mapX(parseFloat(edge[2])))
+					 .attr('x2', edge => mapX(parseFloat(edge[2])) + xOffset)
 					 .attr('y2', edge => mapY(parseFloat(edge[3])))
 					 .attr('stroke', edge => edge[4] == 1 ? mstEdgeCol : edgeCol)
 					 .attr('stroke-width', edge => edge[4] == 1 ? 1.25 : .5)
@@ -102,7 +103,7 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 					 .enter()
 					 .append('circle')
 					 .attr('id', node => fixSchoolName(node[0]))
-					 .attr('cx', node => mapX(parseFloat(node[1])) + diff + networkWidth)
+					 .attr('cx', node => mapX(parseFloat(node[1])) + diff + networkWidth + xOffset)
 					 .attr('cy', node => mapY(parseFloat(node[2])))
 					 .attr('r', node => node[0] == midPrestigeSchool ? r + (r/6) : r)
 					 .attr('fill', node => node[0] == midPrestigeSchool ? sourceCol : 'rgb(250, 250, 250)')
@@ -114,9 +115,9 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 					 .enter()
 					 .append('line')
 					 .attr('id', edge => fixSchoolName(edge[5]) + '-' + fixSchoolName(edge[6]))
-					 .attr('x1', edge => mapX(parseFloat(edge[0])) + diff + networkWidth)
+					 .attr('x1', edge => mapX(parseFloat(edge[0])) + diff + networkWidth + xOffset)
 					 .attr('y1', edge => mapY(parseFloat(edge[1])))
-					 .attr('x2', edge => mapX(parseFloat(edge[2])) + diff + networkWidth)
+					 .attr('x2', edge => mapX(parseFloat(edge[2])) + diff + networkWidth + xOffset)
 					 .attr('y2', edge => mapY(parseFloat(edge[3])))
 					 .attr('stroke', edge => edge[4] == 1 ? mstEdgeCol : edgeCol)
 					 .attr('stroke-width', edge => edge[4] == 1 ? 1.25 : .5)
@@ -127,7 +128,7 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 					 .enter()
 					 .append('circle')
 					 .attr('id', node => fixSchoolName(node[0]))
-					 .attr('cx', node => mapX(parseFloat(node[1])) + (diff * 2) + (networkWidth * 2))
+					 .attr('cx', node => mapX(parseFloat(node[1])) + (diff * 2) + (networkWidth * 2) + xOffset)
 					 .attr('cy', node => mapY(parseFloat(node[2])))
 					 .attr('r', node => node[0] == lowPrestigeSchool ?  r + (r/6) : r)
 					 .attr('fill', node => node[0] == lowPrestigeSchool ? sourceCol : 'rgb(250, 250, 250)')
@@ -139,9 +140,9 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 					 .enter()
 					 .append('line')
 					 .attr('id', edge => fixSchoolName(edge[5]) + '-' + fixSchoolName(edge[6]))
-					 .attr('x1', edge => mapX(parseFloat(edge[0])) + (diff * 2) + (networkWidth * 2))
+					 .attr('x1', edge => mapX(parseFloat(edge[0])) + (diff * 2) + (networkWidth * 2) + xOffset)
 					 .attr('y1', edge => mapY(parseFloat(edge[1])))
-					 .attr('x2', edge => mapX(parseFloat(edge[2])) + (diff * 2) + (networkWidth * 2))
+					 .attr('x2', edge => mapX(parseFloat(edge[2])) + (diff * 2) + (networkWidth * 2) + xOffset)
 					 .attr('y2', edge => mapY(parseFloat(edge[3])))
 					 .attr('stroke', edge => edge[4] == 1 ? mstEdgeCol : edgeCol)
 					 .attr('stroke-width', edge => edge[4] == 1 ? 1.25 : .5);
@@ -192,6 +193,7 @@ function draw(redraw) {
 	const networkWidth = document.body.clientWidth / fraction;
 	const diff = (document.body.clientWidth / 3) - networkWidth;
 	const r = networkWidth * .0125;
+	const xOffset = 30;
 
 	svg.style('height', networkWidth + 70);
 
@@ -214,7 +216,7 @@ function draw(redraw) {
     highPrestigeNodes.selectAll('circle')
 					 .data([])
 					 .exit()
-					 .style('cx', node => mapX(parseFloat(node[1])))
+					 .style('cx', node => mapX(parseFloat(node[1])) + xOffset)
 					 .style('cy', node => mapY(parseFloat(node[2])))
 					 .style('r', node => node[0] == highPrestigeSchool ? r + (r/6) : r)
 					 .style('fill', node => redraw ? highPrestigeNodes.select('#' + fixSchoolName(node[0])).style('fill') : 
@@ -226,9 +228,9 @@ function draw(redraw) {
 	highPrestigeEdges.selectAll('line')
 					 .data([])
 					 .exit()
-					 .attr('x1', edge => mapX(parseFloat(edge[0])))
+					 .attr('x1', edge => mapX(parseFloat(edge[0])) + xOffset)
 					 .attr('y1', edge => mapY(parseFloat(edge[1])))
-					 .attr('x2', edge => mapX(parseFloat(edge[2])))
+					 .attr('x2', edge => mapX(parseFloat(edge[2])) + xOffset)
 					 .attr('y2', edge => mapY(parseFloat(edge[3])))
 					 .style('stroke', edge => redraw ? highPrestigeEdges.select('#' + fixSchoolName(edge[5]) + '-' + fixSchoolName(edge[6])).style('stroke') :
 					 				  	      edge[4] == 1 ? mstEdgeCol : edgeCol)
@@ -238,7 +240,7 @@ function draw(redraw) {
     midPrestigeNodes.selectAll('circle')
 					 .data([])
 					 .exit()
-					 .style('cx', node => mapX(parseFloat(node[1])) + diff + networkWidth)
+					 .style('cx', node => mapX(parseFloat(node[1])) + diff + networkWidth + xOffset)
 					 .style('cy', node => mapY(parseFloat(node[2])))
 					 .style('r', node => node[0] == midPrestigeSchool ? r + (r/6) : r)
 					 .style('fill', node => redraw ? midPrestigeNodes.select('#' + fixSchoolName(node[0])).style('fill') : 
@@ -250,9 +252,9 @@ function draw(redraw) {
 	midPrestigeEdges.selectAll('line')
 					 .data([])
 					 .exit()
-					 .attr('x1', edge => mapX(parseFloat(edge[0])) + diff + networkWidth)
+					 .attr('x1', edge => mapX(parseFloat(edge[0])) + diff + networkWidth + xOffset)
 					 .attr('y1', edge => mapY(parseFloat(edge[1])))
-					 .attr('x2', edge => mapX(parseFloat(edge[2])) + diff + networkWidth)
+					 .attr('x2', edge => mapX(parseFloat(edge[2])) + diff + networkWidth + xOffset)
 					 .attr('y2', edge => mapY(parseFloat(edge[3])))
 					 .style('stroke', edge => redraw ? midPrestigeEdges.select('#' + fixSchoolName(edge[5]) + '-' + fixSchoolName(edge[6])).style('stroke') :
 					 				  	      edge[4] == 1 ? mstEdgeCol : edgeCol)
@@ -262,7 +264,7 @@ function draw(redraw) {
     lowPrestigeNodes.selectAll('circle')
 					 .data([])
 					 .exit()
-					 .style('cx', node => mapX(parseFloat(node[1])) + (diff * 2) + (networkWidth * 2))
+					 .style('cx', node => mapX(parseFloat(node[1])) + (diff * 2) + (networkWidth * 2) + xOffset)
 					 .style('cy', node => mapY(parseFloat(node[2])))
 					 .style('r', node => node[0] == lowPrestigeSchool ?  r + (r/6) : r)
 					 .style('fill', node => redraw ? lowPrestigeNodes.select('#' + fixSchoolName(node[0])).style('fill') : 
@@ -274,9 +276,9 @@ function draw(redraw) {
 	lowPrestigeEdges.selectAll('line')
 					 .data([])
 					 .exit()
-					 .attr('x1', edge => mapX(parseFloat(edge[0])) + (diff * 2) + (networkWidth * 2))
+					 .attr('x1', edge => mapX(parseFloat(edge[0])) + (diff * 2) + (networkWidth * 2) + xOffset)
 					 .attr('y1', edge => mapY(parseFloat(edge[1])))
-					 .attr('x2', edge => mapX(parseFloat(edge[2])) + (diff * 2) + (networkWidth * 2))
+					 .attr('x2', edge => mapX(parseFloat(edge[2])) + (diff * 2) + (networkWidth * 2) + xOffset)
 					 .attr('y2', edge => mapY(parseFloat(edge[3])))
 					 .style('stroke', edge => redraw ? lowPrestigeEdges.select('#' + fixSchoolName(edge[5]) + '-' + fixSchoolName(edge[6])).style('stroke') :
 					 				  	      edge[4] == 1 ? mstEdgeCol : edgeCol)

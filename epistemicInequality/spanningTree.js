@@ -475,3 +475,13 @@ function dist (x1, y1, x2, y2) {
   var dist = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
   return (dist);
 };
+
+var svgData = $("#svg")[0].outerHTML;
+var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+var svgUrl = URL.createObjectURL(svgBlob);
+var downloadLink = document.createElement("a");
+downloadLink.href = svgUrl;
+downloadLink.download = "epistemicInequality.svg";
+document.body.appendChild(downloadLink);
+downloadLink.click();
+document.body.removeChild(downloadLink);

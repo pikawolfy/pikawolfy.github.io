@@ -148,35 +148,35 @@ Promise.all([parseNodes, parseLines, parseJSON]).then(function([nodes, edges, ep
 
 	const key = svg.append('g');
 
-    key.append('circle')
-       .attr('id', 'sourceCircle')
-       .attr('fill', sourceCol)
-       .attr('r', 5.5)
-       .attr('cx', networkWidth * 1.4)
-       .attr('cy', networkWidth + 40);
+    // key.append('circle')
+    //    .attr('id', 'sourceCircle')
+    //    .attr('fill', sourceCol)
+    //    .attr('r', 5.5)
+    //    .attr('cx', networkWidth * 1.4)
+    //    .attr('cy', networkWidth + 40);
 
-    key.append('text')
-       .attr('id', 'sourceText')
-       .attr('x',  networkWidth * 1.4 + 15)
-       .attr('y', networkWidth + 45)
-       .style('font-family', 'Helvetica')
-       .style('font-size', 14)
-       .text('Source institution');
+    // key.append('text')
+    //    .attr('id', 'sourceText')
+    //    .attr('x',  networkWidth * 1.4 + 15)
+    //    .attr('y', networkWidth + 45)
+    //    .style('font-family', 'Helvetica')
+    //    .style('font-size', 14)
+    //    .text('Source institution');
 
-    key.append('circle')
-       .attr('id', 'infectedCircle')
-       .attr('fill', '#2b2b2b')
-       .attr('r', 5.5)
-       .attr('cx', networkWidth * 2.2 - 10)
-       .attr('cy', networkWidth + 40);
+    // key.append('circle')
+    //    .attr('id', 'infectedCircle')
+    //    .attr('fill', '#2b2b2b')
+    //    .attr('r', 5.5)
+    //    .attr('cx', networkWidth * 2.2 - 10)
+    //    .attr('cy', networkWidth + 40);
 
-    key.append('text')
-       .attr('id', 'infectedText')
-       .attr('x', networkWidth * 2.2 + 5)
-       .attr('y', networkWidth + 45)
-       .style('font-family', 'Helvetica')
-       .style('font-size', 14)
-       .text('Infected universities');
+    // key.append('text')
+    //    .attr('id', 'infectedText')
+    //    .attr('x', networkWidth * 2.2 + 5)
+    //    .attr('y', networkWidth + 45)
+    //    .style('font-family', 'Helvetica')
+    //    .style('font-size', 14)
+    //    .text('Infected universities');
 
     d3.select('body').style('visibility', 'visible');
 
@@ -285,21 +285,21 @@ function draw(redraw) {
 					 				  	      edge[4] == 1 ? mstEdgeCol : edgeCol)
 					 .style('stroke-width', edge => edge[4] == 1 ? 1.25 : .5);
 
-	svg.select('#sourceCircle')
-       .style('cx', networkWidth * 1.4)
-       .style('cy', networkWidth + 40);
+	// svg.select('#sourceCircle')
+ //       .style('cx', networkWidth * 1.4)
+ //       .style('cy', networkWidth + 40);
 
-    svg.select('#sourceText')
-       .attr('x',  networkWidth * 1.4 + 15)
-       .attr('y', networkWidth + 45);
+ //    svg.select('#sourceText')
+ //       .attr('x',  networkWidth * 1.4 + 15)
+ //       .attr('y', networkWidth + 45);
 
-    svg.select('#infectedCircle')
-       .style('cx', networkWidth * 2.2 - 10)
-       .style('cy', networkWidth + 40);
+ //    svg.select('#infectedCircle')
+ //       .style('cx', networkWidth * 2.2 - 10)
+ //       .style('cy', networkWidth + 40);
 
-    svg.select('#infectedText')
-       .attr('x', networkWidth * 2.2 + 5)
-       .attr('y', networkWidth + 45);
+ //    svg.select('#infectedText')
+ //       .attr('x', networkWidth * 2.2 + 5)
+ //       .attr('y', networkWidth + 45);
 
 	if(!redraw) {
 		setTimeout(() => {
@@ -423,7 +423,19 @@ function animateEpidemic(epidemics) {
 	    					.style("stroke-dashoffset", 0);
 	    			}
 	    		}
+	    		
+	    		var svgData = document.querySelector("svg").outerHTML;
+				console.log(svgData)
+				var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+				var svgUrl = URL.createObjectURL(svgBlob);
+				var downloadLink = document.createElement("a");
+				downloadLink.href = svgUrl;
+				downloadLink.download = "timestep" + i + ".svg";
+				document.body.appendChild(downloadLink);
+				downloadLink.click();
+				document.body.removeChild(downloadLink);
 	    	}
+
     	}, (i+1) * 1200);
 
     	if (i == 4) {
@@ -476,12 +488,13 @@ function dist (x1, y1, x2, y2) {
   return (dist);
 };
 
-var svgData = $("#svg")[0].outerHTML;
-var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
-var svgUrl = URL.createObjectURL(svgBlob);
-var downloadLink = document.createElement("a");
-downloadLink.href = svgUrl;
-downloadLink.download = "epistemicInequality.svg";
-document.body.appendChild(downloadLink);
-downloadLink.click();
-document.body.removeChild(downloadLink);
+// var svgData = document.querySelector("svg").outerHTML;
+// console.log(svgData)
+// var svgBlob = new Blob([svgData], {type:"image/svg+xml;charset=utf-8"});
+// var svgUrl = URL.createObjectURL(svgBlob);
+// var downloadLink = document.createElement("a");
+// downloadLink.href = svgUrl;
+// downloadLink.download = "epistemicInequality.svg";
+// document.body.appendChild(downloadLink);
+// downloadLink.click();
+// document.body.removeChild(downloadLink);

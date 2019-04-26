@@ -1,0 +1,108 @@
+{
+  "_args": [
+    [
+      "elkjs",
+      "/mnt/c/Users/mcken/Dropbox/Capstone"
+    ]
+  ],
+  "_from": "elkjs@latest",
+  "_id": "elkjs@0.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/elkjs",
+  "_nodeVersion": "8.11.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/elkjs_0.4.1_1534005351801_0.8962652289541557"
+  },
+  "_npmUser": {
+    "email": "uru@informatik.uni-kiel.de",
+    "name": "uruuru"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "elkjs",
+    "raw": "elkjs",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/elkjs/-/elkjs-0.4.1.tgz",
+  "_shasum": "6b42de8572fa49642e2f0c31d5e584608e47196d",
+  "_shrinkwrap": null,
+  "_spec": "elkjs",
+  "_where": "/mnt/c/Users/mcken/Dropbox/Capstone",
+  "author": {
+    "email": "uru@informatik.uni-kiel.de",
+    "name": "Ulf Rüegg"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenKieler/elkjs/issues"
+  },
+  "dependencies": {},
+  "description": "Automatic graph layout based on Sugiyama's algorithm. Specialized for data flow diagrams and ports.",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "browserify": "^14.4.0",
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.1.1",
+    "mkdirp": "^0.5.0",
+    "mocha": "^3.2.0",
+    "webworker-threads": "^0.7.12"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 8,
+    "integrity": "sha512-fiVIfjlVptEaFw6QydlZWKEV80MnlNDtfiFeHcbL65i2+UaknKVhFW0VVB8YmHbaMYKNUJ/9CKlOqPmarGuZBQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbbxBoCRA9TVsSAnZWagAAanQQAJyehRdHRE9N1YCfMdnH\n6HtafsMFTRdQBffqL65lOkYjQ4pBi4tBfTJmzlcM9g3NPH+QI6ZlNwxJHCMV\nFMKgtVbL+y/Br4rf+DXEoTgwZSY1JEq6seqNeWGUANM36hhV5e/itBS1unJN\n8Q11/6MCdsUQIDJSS2vSFQkyPJyGp1E+IlIrWXo//RNhfa63IH7t/QtBxrAr\naOSRdkiatWl9oxLLUuhCcYYaSzOlH/Vovvla7OqPF21/FEDolUW1BKqlE8eb\nAdfQwW6Jk29yH3zS9t9ZLYrB4U2GhkDl2yr+aSMmryKQA8RPth+Q9CMeTEH2\ngWcoh0IvGPR/chgGzL7Bf6vFzrXtvWio2zvnzB1u6t6mOgUnRQMMFSGPA7pA\nasm0zQjcMoJs+1eFcACl4kY8agxOo+Jzq1udG+/qD6H6qVJvPdgjBBWHX4Ae\nolYqvjl24Q3tdjAQNsnwi4fGBJ+60qZ129yTkXthkoIWjiJCRBSaQwfwMH04\nyMu6GuDu5Z3AQ0vysJFYFEZZULPaFfC7pWk4t6vJKOFTFiVcDBIMTLkzm+qy\n6bqpJHf0g2n1SkOlY4b0udtuvcYRxbK/5fzoggwQeNEzLJO4505HzkDPZGl1\nfU6e4I4weCXMMuBJRi5xo7LpFo3J+eNWwlk1AA7tk/eX0aLT8qW6kkiDAcEF\njLDK\r\n=YRaW\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "6b42de8572fa49642e2f0c31d5e584608e47196d",
+    "tarball": "https://registry.npmjs.org/elkjs/-/elkjs-0.4.1.tgz",
+    "unpackedSize": 6873442
+  },
+  "files": [
+    "lib"
+  ],
+  "gitHead": "561db93282f6845ede55fb1867bcc4bde713b2e1",
+  "homepage": "https://github.com/OpenKieler/elkjs#readme",
+  "keywords": [
+    "dataflow",
+    "graph",
+    "layered",
+    "layout",
+    "ports"
+  ],
+  "license": "EPL-1.0",
+  "main": "lib/main.js",
+  "maintainers": [
+    {
+      "name": "uruuru",
+      "email": "uru@informatik.uni-kiel.de"
+    }
+  ],
+  "name": "elkjs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenKieler/elkjs.git"
+  },
+  "scripts": {
+    "babel": "babel src/js/ -d build/js/",
+    "browserify": "mkdirp lib && npm run browserifyApi && npm run browserifyBundle",
+    "browserifyApi": "browserify build/js/main-api.js -s ELK --outfile lib/elk-api.js",
+    "browserifyBundle": "browserify build/js/main-node.js -s ELK -i 'webworker-threads' --outfile lib/elk.bundled.js",
+    "build": "npm run gradle && npm run js",
+    "clean": "rm -r lib",
+    "cp": "cp build/js/elk-worker*.js lib/ && cp build/js/main-node.js lib/main.js",
+    "gradle": "./gradlew lib",
+    "js": "npm run babel && npm run browserify && npm run cp",
+    "test": "mocha test/mocha"
+  },
+  "version": "0.4.1"
+}

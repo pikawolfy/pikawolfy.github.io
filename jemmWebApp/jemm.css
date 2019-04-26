@@ -1,0 +1,120 @@
+#header {
+	background-color: #444444;
+	padding-top: 10px;
+	padding-left: 10px;
+	height: 50px;
+	font-family: 'Quicksand', sans-serif;
+	box-shadow: 0px 3px #888888;
+	position: relative;
+}
+
+#header h1 {
+	position: absolute;
+	margin-left: 160px;
+	margin-top: -45px;
+	color: #ffc83d;
+}
+
+img {
+	padding-left: 5px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #f2f2f2;
+	height: 100%;
+}
+
+#svgDiv {
+	position: absolute;
+	top: 50;
+	left: 0;
+	height: auto;
+	width: 100%;
+}
+
+#sidePanel {
+	width: 0;
+	height: 0;
+	position: absolute;
+	background-color: #e2e2e2;
+	float: left;
+	margin-right: 50px;
+	visibility: hidden;
+	box-shadow: 3px 0px #888888;
+	z-index: 1;
+	border-top: solid 3px #888888;
+}
+
+#ui {
+	display: inline;
+}
+
+.choose_file {
+    margin-right: 20px;
+    margin-top: 5px;
+    float: right;
+}
+
+button {
+  background-color: #ffc83d;
+  border: none;
+  color: black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  position: absolute;
+}
+
+input:hover {
+	cursor: pointer;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.choose_file input[type='file'] {
+    -webkit-appearance:none; 
+    float: right;
+    margin-right: 30px;
+    margin-top: 0px;
+    opacity:0;
+    width: 125px;
+    padding: 0;
+    cursor:pointer;
+    font-size: 0;
+    height: 30px;
+}
+
+.menu {
+	padding-left: 10px;
+	padding-top: 10px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.menu p {
+	padding-top: 0px;
+	margin-top: 5px;
+	padding-left: 30px;
+	font-size: 14px;
+}
+
+.menu div {
+	padding-top: 0px;
+	margin-top: 5px;
+	padding-left: 30px;
+	font-size: 14px;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+a:visited {
+	color: 'slateGray';
+}

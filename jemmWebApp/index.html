@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+		<script src="https://d3js.org/d3-path.v1.min.js"></script>
+		<script src="https://d3js.org/d3-shape.v1.min.js"></script>
+		<script src="scripts/elkjs/lib/elk.bundled.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+		<link rel="stylesheet" media="screen" href="jemm.css">
+	</head>
+	<body>
+		<div id="header">
+			<img src="imgs/jemmGreen.png" height="35">
+			<img src="imgs/jemmYellow.png" height="35">
+			<img src="imgs/jemmRed.png" height="35">
+			<h1> jemm </h1>
+			<div class="choose_file">
+			    <button type="button" class="btn btn-default" style="width: 125px;">Upload logs</button>
+			    <input id='upload' name="logs" type="file" accept=".json" />
+			</div>
+		</div>
+		<div id="ui">
+			<div id='sidePanel'>
+				<div id = 'files' class="menu">Active Files</div>
+				<div id = 'libs' class='menu'>Libraries</div>
+			</div>
+			<div id='svgDiv'>
+			</div>
+		</div>
+	</body>
+	<script src="scripts/jemm.js"></script>
+</html>
